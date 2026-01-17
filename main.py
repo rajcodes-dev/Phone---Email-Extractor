@@ -1,8 +1,9 @@
 """Phone & Email Extractor"""
 import pyperclip, re
 
-text = pyperclip.paste()
+text = str(pyperclip.paste())
 
+# Create Phone regex.
 phonere = re.compile(r"""(
                      (\d{3}|\(\d{3}\))? # Area Code
                      (\s|-|\.)? # Separator
@@ -12,4 +13,15 @@ phonere = re.compile(r"""(
                      (\s*(ext|x|ext\.)\s*\d{2,5})?  # Extension
                      )""", re.VERBOSE)
 
+# Create email regex.
+emailre = re.compile(r"""
+                     [a-zA-Z0-9._%+-]+ # username
+                     @ # @ symbol
+                     [a-zA-Z0-9.-]+ # domain name
+                     (\.[a-zA-Z]{2,4}) # dot-something
+                     """, re.VERBOSE)
 
+# Find matches in clipboard text.
+
+
+# Copy results to the clipboard.
